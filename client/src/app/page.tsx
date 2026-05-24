@@ -258,7 +258,8 @@ def calculate_discount(user_id, cart_total, db_client):
     // Note: Do NOT clear result, edgeCases, analysis, etc. here so they remain visible on failures
 
     try {
-      const response = await fetch("http://localhost:5001/api/ai/test", {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
+      const response = await fetch(`${apiUrl}/api/ai/test`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
